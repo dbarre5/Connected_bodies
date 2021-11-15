@@ -86,7 +86,7 @@ box_shift = box_H/4.0       # Shift of box to get it at the right water level, m
 box_Spacing = 1.4            # Spacing between the boxes, meters
 
 
-box_water_level = box_shift+water_level+1.0 #location of water level in the box
+box_water_level = box_shift+opts.water_level+1.0 #location of water level in the box
 
 ##############################################################################
 #######################    MESH SIZING PARAMETERS      #######################
@@ -589,8 +589,20 @@ f1.ZMax = water_level+opts.he/opts.d_interface_he*1.75
 f1.ZMin = water_level-opts.he/opts.d_interface_he*1.75
 f1.Thickness = opts.Lz/2.
 
+# create field for air water interface at
+f2 = py2gmsh.Field.Box(mesh=mesh)
+f2.VIn = opts.he/opts.d_interface_he
+f2.VOut = opts.he
+f2.XMax = box_end[0][0]
+f2.XMin = box_start[0][0]
+f2.YMax = box_end[0][1]
+f2.YMin = box_start[0][1]
+f2.ZMax = box_end[0][2]
+f2.ZMin = box_start[0][2]
+f2.Thickness = opts.he/opts.d_interface_he
+
 fmin = py2gmsh.Field.Min(mesh=mesh)
-fmin.FieldsList = [f1]
+fmin.FieldsList = [f1,f2]
 
 #create a counter to store the number of fields
 i_gmshFieldCounter = 2

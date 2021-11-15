@@ -33,7 +33,7 @@ if ct.movingDomain:
 
 # Navier-Stokes and VOF
 pnList += [("twp_navier_stokes_p", "twp_navier_stokes_n"),
-           ("vof_p", "vof_n")]
+           ("vof_with_box_p", "vof_n")]
 
 # Level set
 if not ct.useOnlyVF:

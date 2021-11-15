@@ -33,10 +33,11 @@ diffusiveFluxBoundaryConditions = {0: {}}
 
 class PHI_IC(object):
     def uOfXT(self, x, t):
-        return x[2] - ct.water_level
-        for i in range(len(ct.box_start):
+        for i in range(len(ct.box_start)):
             if x[0]>ct.box_start[i][0] and x[0]<ct.box_end[i][0] and x[1]>ct.box_start[i][1] and x[1]<ct.box_end[i][1] and x[2]>ct.box_start[i][2] and x[2]<ct.box_end[i][2]:
-                return x[2] - ct.box_water_level        
+                return x[2] - ct.box_water_level     
+            else:
+                return x[2] - ct.water_level   
 
 
 initialConditions = {0: PHI_IC()}
