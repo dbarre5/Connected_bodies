@@ -86,7 +86,7 @@ box_shift = box_H/4.0       # Shift of box to get it at the right water level, m
 box_Spacing = 1.4            # Spacing between the boxes, meters
 
 
-box_water_level = box_shift+opts.water_level+1.0 #location of water level in the box
+box_water_level = box_shift+opts.water_level+2.0 #location of water level in the box
 
 ##############################################################################
 #######################    MESH SIZING PARAMETERS      #######################
@@ -788,16 +788,3 @@ def twpflowPressure_init(x, t):
     return p_L - g[nd - 1] * (rho_0 * (phi_L - phi) + (rho_1 - rho_0) * (
                 smoothedHeaviside_integral(epsFact_consrv_heaviside * d_min_mesh_size, phi_L)
                 - smoothedHeaviside_integral(epsFact_consrv_heaviside * d_min_mesh_size, phi)))
-© 2021 GitHub, Inc.
-Terms
-Privacy
-Security
-Status
-Docs
-Contact GitHub
-Pricing
-API
-Training
-Blog
-About
-Loading complete
