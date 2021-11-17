@@ -1,3 +1,34 @@
+Skip to content
+Search or jump to…
+Pull requests
+Issues
+Marketplace
+Explore
+ 
+@dbarre5 
+dbarre5
+/
+Connected_bodies
+Public
+1
+00
+Code
+Issues
+Pull requests
+Actions
+Projects
+Wiki
+Security
+Insights
+Settings
+Connected_bodies/TN_with_box.py /
+@dbarre5
+dbarre5 Add files via upload
+Latest commit 8dffe02 2 days ago
+ History
+ 1 contributor
+790 lines (689 sloc)  28.6 KB
+   
 from __future__ import print_function
 from __future__ import division
 from past.utils import old_div
@@ -518,39 +549,39 @@ from proteus.ctransportCoefficients import smoothedHeaviside
 from proteus.ctransportCoefficients import smoothedHeaviside_integral
 nd = domain.nd
 
-class P_IC:
-    def uOfXT(self, x, t):
-        p_L = 0.0
-        phi_L = tank.dim[nd-1] - water_level
-        phi = x[nd-1] - water_level
-        p = p_L -g[nd-1]*(rho_0*(phi_L - phi)
-                          +(rho_1 -rho_0)*(smoothedHeaviside_integral(smoothing,phi_L)
-                                                -smoothedHeaviside_integral(smoothing,phi)))
-        return p
-class U_IC:
-    def uOfXT(self, x, t):
-        return 0.0
-class V_IC:
-    def uOfXT(self, x, t):
-        return 0.0
-class W_IC:
-    def uOfXT(self, x, t):
-        return 0.0
-class VF_IC:
-    def uOfXT(self, x, t):
-        return smoothedHeaviside(smoothing, x[nd-1]-water_level)
-class PHI_IC:
-    def uOfXT(self, x, t):
-        return x[nd-1] - water_level
+#class P_IC:
+#    def uOfXT(self, x, t):
+#        p_L = 0.0
+#        phi_L = tank.dim[nd-1] - water_level
+#        phi = x[nd-1] - water_level
+#        p = p_L -g[nd-1]*(rho_0*(phi_L - phi)
+#                          +(rho_1 -rho_0)*(smoothedHeaviside_integral(smoothing,phi_L)
+#                                                -smoothedHeaviside_integral(smoothing,phi)))
+#        return p
+#class U_IC:
+#    def uOfXT(self, x, t):
+#        return 0.0
+#class V_IC:
+#    def uOfXT(self, x, t):
+#        return 0.0
+#class W_IC:
+#    def uOfXT(self, x, t):
+#        return 0.0
+#class VF_IC:
+#    def uOfXT(self, x, t):
+#        return smoothedHeaviside(smoothing, x[nd-1]-water_level)
+#class PHI_IC:
+#    def uOfXT(self, x, t):
+#        return x[nd-1] - water_level
 
 # instanciating the classes for *_p.py files
-initialConditions = {'pressure': P_IC(),
-                     'vel_u': U_IC(),
-                     'vel_v': V_IC(),
-                     'vel_w': W_IC(),
-                     'vof': VF_IC(),
-                     'ncls': PHI_IC(),
-                     'rdls': PHI_IC()}
+#initialConditions = {'pressure': P_IC(),
+#                     'vel_u': U_IC(),
+#                     'vel_v': V_IC(),
+#                     'vel_w': W_IC(),
+#                     'vof': VF_IC(),
+#                     'ncls': PHI_IC(),
+#                     'rdls': PHI_IC()}
 
 #  __  __           _        ___        _   _
 # |  \/  | ___  ___| |__    / _ \ _ __ | |_(_) ___  _ __  ___
@@ -788,3 +819,16 @@ def twpflowPressure_init(x, t):
     return p_L - g[nd - 1] * (rho_0 * (phi_L - phi) + (rho_1 - rho_0) * (
                 smoothedHeaviside_integral(epsFact_consrv_heaviside * d_min_mesh_size, phi_L)
                 - smoothedHeaviside_integral(epsFact_consrv_heaviside * d_min_mesh_size, phi)))
+© 2021 GitHub, Inc.
+Terms
+Privacy
+Security
+Status
+Docs
+Contact GitHub
+Pricing
+API
+Training
+Blog
+About
+Loading complete
